@@ -1,0 +1,6 @@
+tipo,id,nombre,estado,extra,etiquetas
+PORTATIL,M001,Portátil Aula 1,DISPONIBLE,16,ofimatica|aula1
+PORTATIL,M002,Portátil Aula 2,DISPONIBLE,8,ofimatica|aula2
+PROYECTOR,M010,Proyector Epson,DISPONIBLE,3200,video|salon
+PROYECTOR,M011,Proyector BenQ,PRESTADO,3000,video|aula3
+PORTATIL,M003,Portátil Biblioteca,BAJA,8,biblioteca|ofimatica
