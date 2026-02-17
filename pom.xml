@@ -26,7 +26,6 @@
                     <useModulePath>false</useModulePath>
                 </configuration>
             </plugin>
-            <
         </plugins>
     </build>
 
