@@ -6,6 +6,7 @@ package es.fplumara.dam1.prestamos.app;
  */
 public class Main {
 
+
     public static void main(String[] args) {
         System.out.println("Examen DAM1 - Préstamo de Material (Java 21)");
 

@@ -16,7 +16,7 @@
             <artifactId>commons-csv</artifactId>
             <version>1.14.1</version>
         </dependency>
-
+         <!-- se agrega jUnit -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -49,6 +49,15 @@
                 <version>${surefire.version}</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <mainClass>es.fplumara.dam1.prestamos.app.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
