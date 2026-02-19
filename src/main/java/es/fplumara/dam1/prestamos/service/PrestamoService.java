@@ -1,5 +1,6 @@
 package es.fplumara.dam1.prestamos.service;
 
+import es.fplumara.dam1.prestamos.exception.MaterialNoDisponibleException;
 import es.fplumara.dam1.prestamos.model.EstadoMaterial;
 import es.fplumara.dam1.prestamos.model.Material;
 import es.fplumara.dam1.prestamos.model.Prestamo;
@@ -23,15 +24,26 @@ public class PrestamoService {
      * Cambia el estado del material a PRESTADO.
      */
     public Prestamo crearPrestamo(String idMaterial, String profesor, LocalDate fecha) {
-        Material material = materialRepository.findById(idMaterial)
-                .orElseThrow(() -> new IllegalArgumentException("Material no encontrado con id: " + idMaterial));
 
-        if (material.getEstado() != EstadoMaterial.DISPONIBLE) {
-            throw new IllegalStateException(
-                    "El material '" + idMaterial + "' no está disponible (estado: " + material.getEstado() + ")"
-            );
+        // identifica si algún parámetro requerido esta nullo o vacío y de ser ais te lanza una excepción
+        if (idMaterial == null || idMaterial.isBlank() ||
+                profesor == null || profesor.isBlank() ||
+                fecha == null) {
+            throw new IllegalArgumentException("Los parámetros requeridos no pueden ser nulos o vacíos");
         }
 
+        //busca el ID del material requerido y si no existe te lanza un noEncontradoException
+        Material material = materialRepository.findById(idMaterial)
+                .orElseThrow(() -> new MaterialNoDisponibleException("el material solicitado no existe en este sistema"));
+
+
+        //verifica su estado y si o está disponible te lanza una MaterialNoDisponibleException
+        if (material.getEstado() != EstadoMaterial.DISPONIBLE) {
+            throw new MaterialNoDisponibleException(
+                    "El material '" + idMaterial
+                            + "' no está disponible (estado: " + material.getEstado() + ")");
+        }
+        //para crear un prestamo, cambiar estado y guardar estado
         material.setEstado(EstadoMaterial.PRESTADO);
         materialRepository.save(material);
 
