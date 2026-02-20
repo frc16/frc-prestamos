@@ -34,7 +34,7 @@ public class PrestamoService {
 
         //busca el ID del material requerido y si no existe te lanza un noEncontradoException
         Material material = materialRepository.findById(idMaterial)
-                .orElseThrow(() -> new MaterialNoDisponibleException("el material solicitado no existe en este sistema"));
+                .orElseThrow(() -> new MaterialNoDisponibleException("el mater ial solicitado no existe en este sistema"));
 
 
         //verifica su estado y si o está disponible te lanza una MaterialNoDisponibleException

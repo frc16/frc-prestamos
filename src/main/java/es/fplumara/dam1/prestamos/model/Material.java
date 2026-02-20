@@ -10,6 +10,7 @@ public abstract class Material implements Identificable {
     private EstadoMaterial estado;
     private Set<String> etiquetas;
 
+    //constructor
     public Material(String id, String nombre, EstadoMaterial estado){
 
         this.id = id;
@@ -17,10 +18,12 @@ public abstract class Material implements Identificable {
         this.estado = estado;
         this.etiquetas = new HashSet<>();
     }
-
+     //método abstracto
     public abstract String getTipo();
 
     @Override
+
+    //metodos simples
     public String getId() {
         return id;
     }
